@@ -20,7 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    Button regreso;
     /*
 
     asignacion de botones y demaces
@@ -29,7 +29,9 @@ public class MainActivity extends AppCompatActivity {
 
     Button button1,button2,button5;
     String nombre = "";
+    String nombre2 = "";
     TextView tv1;
+    TextView tv2;
 
     DatabaseReference mDataBase;
 
@@ -43,9 +45,12 @@ public class MainActivity extends AppCompatActivity {
 
         button1=findViewById(R.id.bt1);
         button2=findViewById(R.id.bt2);
+        regreso =findViewById(R.id.buttonRegreso);
 
         button5=findViewById(R.id.bt5);
         tv1 = findViewById(R.id.textView1);
+        tv2 = findViewById(R.id.textView1);
+
 
         mDataBase = FirebaseDatabase.getInstance().getReference();
 
@@ -57,13 +62,13 @@ public class MainActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nombre = "ZZ";
+                nombre2 = "ZZ";
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nombre = "FF";
+                nombre2 = "FF";
             }
         });
 /*
@@ -82,6 +87,21 @@ en este boton se pasa a la otra pantalla y se pasa el dato con el intent pero no
 
 
                 startActivity(intent);
+
+            }
+        });
+        regreso.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+                 Intent intent5 = new Intent(MainActivity.this, MainActivitymenu.class);
+
+                intent5.putExtra("direcciono",nombre2);
+
+
+                startActivity(intent5);
 
             }
         });

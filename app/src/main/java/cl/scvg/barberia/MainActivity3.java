@@ -3,8 +3,10 @@ package cl.scvg.barberia;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -30,15 +32,19 @@ public class MainActivity3 extends AppCompatActivity {
 
     Button btn1,btn2,btn3;
     TextView tv1,tv2;
+    String DIREC,codex,nombre1,nombre2;
+    ListView lvLista;
     //lista para tener los datos de los peluqueros
-    private ArrayList<Peluquero> listilla = new ArrayList<>();
+
+    private List<Peluquero> listPelo = new ArrayList<Peluquero>();
+    private List<String> ListProb = new ArrayList();
+    private List<String> nombresP = new ArrayList();
+    ArrayAdapter<String> arrayAdapterString;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 
-    Intent intent = getIntent();
 
-    String DIREC = intent.getStringExtra("direccion");
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -47,19 +53,31 @@ public class MainActivity3 extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main3);
 
-        inicializarFireBase();
+        Intent intent = getIntent();
+
+        DIREC = intent.getStringExtra("direccion");
+
 
         btn1 =findViewById(R.id.btnA1);
         btn2 =findViewById(R.id.btnB2);
         btn3 =findViewById(R.id.botonP);
         tv1 =findViewById(R.id.TVa);
         tv2 =findViewById(R.id.TVb);
+        lvLista=findViewById(R.id.LvLista);
+
+        inicializarFireBase();
+
+
 
 //aqui puede estar el problema
         asignar();
+            //PRECISAMENTE AQUI ESTA EL PROBLEM IGNORAR EL RESTO DE COMENTARIOS
+        //tv1.setText(nombresP.get(0));
+        //tv2.setText(nombresP.get(1));
 
-        tv1.setText(listilla.get(0).getNombre());
-        tv2.setText(listilla.get(1).getNombre());
+
+        //tv1.setText(nombre1);
+        //tv2.setText(nombre2);
 
 
 
@@ -90,22 +108,41 @@ y se mantienen en un array para asignar la id correspondiente en una variable pr
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                listPelo.clear();
+
                 for(DataSnapshot objs : snapshot.getChildren()){
 
                     Peluquero pelo = objs.getValue(Peluquero.class);
 
-                    if(pelo.getCodigo().equals(DIREC)){
 
-                        listilla.add(pelo);
+                    codex=pelo.getCodigo();
 
+                    if(DIREC.equals(codex)){
+
+                        listPelo.add(pelo);
 
                     }
+
+                    ListProb.add("dato 1: " + pelo.getID()+" dato2: "+ pelo.getNombre() + " dato 3"+pelo.getCodigo()+"     "+codex);
+                    arrayAdapterString = new ArrayAdapter<>(MainActivity3.this, android.R.layout.simple_list_item_1,ListProb);
+                    lvLista.setAdapter(arrayAdapterString);
+
+                    //if(DIREC.equals(codex)){
+
+                        /*if(nombre1.isEmpty()){
+                            nombre1= pelo.getNombre();
+                        }else{
+                            nombre2 = pelo.getNombre();
+                        }*/
+
+
+                    //}
 
 
 
                 }
 
-
+                actualizarTextViews();
 
             }
 
@@ -114,6 +151,16 @@ y se mantienen en un array para asignar la id correspondiente en una variable pr
 
             }
         });
+    }
+
+    private void actualizarTextViews() {
+        if (listPelo.size() > 1) {
+            tv1.setText(listPelo.get(0).getNombre());
+            tv2.setText(listPelo.get(1).getNombre());
+        } else {
+            tv1.setText("No hay datos disponibles");
+            tv2.setText("No hay datos disponibles");
+        }
     }
 
     private void inicializarFireBase(){
