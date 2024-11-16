@@ -18,6 +18,8 @@ import androidx.fragment.app.Fragment;
 public class SecondFragment extends Fragment {
     Button viaje;
     TextView datos;
+    private static final String ARG_DIREC = "direcciono"; // Constante para la clave
+    private String direcciono;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -33,18 +35,26 @@ public class SecondFragment extends Fragment {
 
     /**
      * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
+     * this fragment using the provided parameters.di
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
      * @return A new instance of fragment SecondFragment.
      */
     // TODO: Rename and change types and number of parameters
+
     public static SecondFragment newInstance(String param1, String param2) {
         SecondFragment fragment = new SecondFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
+    public static SecondFragment newInstance(String direcciono) {
+        SecondFragment fragment = new SecondFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_DIREC, direcciono);
         fragment.setArguments(args);
         return fragment;
     }
@@ -61,6 +71,7 @@ public class SecondFragment extends Fragment {
 
 
         if (getArguments() != null) {
+            direcciono = getArguments().getString(ARG_DIREC);
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
@@ -75,7 +86,11 @@ public class SecondFragment extends Fragment {
         // Asignar el botón después de inflar el layout
         viaje = view.findViewById(R.id.buttonViaje);
 
-        datos = view.findViewById(R.id.textViewDATOS);
+        //datos = view.findViewById(R.id.textViewDATOS);
+        TextView datos = view.findViewById(R.id.textViewDATOS);
+        if (direcciono != null) {
+            datos.setText(direcciono); // Mostrar el valor en el TextView
+        }
 
         // Aquí puedes agregar la lógica para el botón, por ejemplo, un OnClickListener
         viaje.setOnClickListener(new View.OnClickListener() {
@@ -94,4 +109,7 @@ public class SecondFragment extends Fragment {
 
         return view;
     }
+
+
+
 }
