@@ -3,6 +3,7 @@ package cl.scvg.barberia;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,7 +31,7 @@ import cl.scvg.barberia.clases.Peluquero;
 
 public class MainActivity3 extends AppCompatActivity {
 
-    Button btn1,btn2,btn3;
+    Button btn1,btn2;
     TextView tv1,tv2;
     String DIREC,codex,nombre1,nombre2;
     ListView lvLista;
@@ -60,7 +61,7 @@ public class MainActivity3 extends AppCompatActivity {
 
         btn1 =findViewById(R.id.btnA1);
         btn2 =findViewById(R.id.btnB2);
-        btn3 =findViewById(R.id.botonP);
+
         tv1 =findViewById(R.id.TVa);
         tv2 =findViewById(R.id.TVb);
         lvLista=findViewById(R.id.LvLista);
@@ -69,18 +70,38 @@ public class MainActivity3 extends AppCompatActivity {
 
 
 
-//aqui puede estar el problema
         asignar();
-            //PRECISAMENTE AQUI ESTA EL PROBLEM IGNORAR EL RESTO DE COMENTARIOS
-        //tv1.setText(nombresP.get(0));
-        //tv2.setText(nombresP.get(1));
 
 
-        //tv1.setText(nombre1);
-        //tv2.setText(nombre2);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent_HORARIO = new Intent(MainActivity3.this, MainActivity4.class);
+
+                intent_HORARIO.putExtra("peluquero",nombre1);
+                intent_HORARIO.putExtra("direccion",DIREC);
 
 
+                startActivity(intent_HORARIO);
 
+            }
+        });
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent_HORARIO = new Intent(MainActivity3.this, MainActivity4.class);
+
+                intent_HORARIO.putExtra("peluquero",nombre2);
+                intent_HORARIO.putExtra("direccion",DIREC);
+
+
+                startActivity(intent_HORARIO);
+
+            }
+        });
 
 
 
@@ -157,6 +178,11 @@ y se mantienen en un array para asignar la id correspondiente en una variable pr
         if (listPelo.size() > 1) {
             tv1.setText(listPelo.get(0).getNombre());
             tv2.setText(listPelo.get(1).getNombre());
+
+            nombre1 = listPelo.get(0).getNombre();
+            nombre2 = listPelo.get(1).getNombre();
+
+
         } else {
             tv1.setText("No hay datos disponibles");
             tv2.setText("No hay datos disponibles");

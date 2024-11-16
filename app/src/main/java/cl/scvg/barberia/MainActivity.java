@@ -62,13 +62,13 @@ public class MainActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nombre2 = "ZZ";
+                nombre = "ZZ";
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nombre2 = "FF";
+                nombre = "FF";
             }
         });
 /*
