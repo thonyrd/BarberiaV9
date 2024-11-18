@@ -1,18 +1,32 @@
 {
   "project_info": {
     "project_number": "66882570676",
+    "firebase_url": "https://barberia-e8425-default-rtdb.firebaseio.com",
     "project_id": "barberia-e8425",
-    "storage_bucket": "barberia-e8425.appspot.com"
+    "storage_bucket": "barberia-e8425.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:66882570676:android:b935a87dee7879caf9cae1",
+        "mobilesdk_app_id": "1:66882570676:android:256a801bcf503ed8f9cae1",
         "android_client_info": {
-          "package_name": "cl.scvg.barberia"
+          "package_name": "cl.andres.projectobarbertime"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "66882570676-1qt2qsc31t7jfm3gk4c8lc84jvb4ieth.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cl.andres.projectobarbertime",
+            "certificate_hash": "d91b4c41f9ac1e0885cdc4c341f011ff90fc1999"
+          }
+        },
+        {
+          "client_id": "66882570676-d0cv6kkj7llgnsn8bkil2modt6rjph41.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCYTKtOi-Nq6dFvTzPzjJFRCZoCYA12suo"
@@ -20,7 +34,49 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "66882570676-d0cv6kkj7llgnsn8bkil2modt6rjph41.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:66882570676:android:b935a87dee7879caf9cae1",
+        "android_client_info": {
+          "package_name": "cl.scvg.barberia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "66882570676-d5egbp8qn0bv4fmtflt8arsi5o2bbpk6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cl.scvg.barberia",
+            "certificate_hash": "c407bea06a17b1ffc2fa8399946b1103cea7bde3"
+          }
+        },
+        {
+          "client_id": "66882570676-d0cv6kkj7llgnsn8bkil2modt6rjph41.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYTKtOi-Nq6dFvTzPzjJFRCZoCYA12suo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "66882570676-d0cv6kkj7llgnsn8bkil2modt6rjph41.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

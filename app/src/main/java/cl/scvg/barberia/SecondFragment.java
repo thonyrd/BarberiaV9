@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,7 +17,7 @@ import androidx.fragment.app.Fragment;
  * create an instance of this fragment.
  */
 public class SecondFragment extends Fragment {
-    Button viaje;
+    Button viaje, mapaBt;
     TextView datos;
     private static final String ARG_ID = "id"; // Constante para la clave
     private String id_cita;
@@ -28,6 +29,7 @@ public class SecondFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
 
     public SecondFragment() {
         // Required empty public constructor
@@ -85,6 +87,7 @@ public class SecondFragment extends Fragment {
 
         // Asignar el botón después de inflar el layout
         viaje = view.findViewById(R.id.buttonViaje);
+        mapaBt= (Button) view.findViewById(R.id.btMapa);
 
         //datos = view.findViewById(R.id.textViewDATOS);
         TextView datos = view.findViewById(R.id.textViewDATOS);
@@ -105,7 +108,20 @@ public class SecondFragment extends Fragment {
 
 
             }
+
         });
+
+        mapaBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Aquí en lugar de lanzar una actividad, agregamos el MapFragment al contenedor actual
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, new MapFragment()); // Aquí se debe usar el ID del contenedor de tu fragmento
+                transaction.addToBackStack(null); // Opcional: Para que el fragmento se pueda regresar
+                transaction.commit();
+            }
+        });
+
 
         return view;
     }

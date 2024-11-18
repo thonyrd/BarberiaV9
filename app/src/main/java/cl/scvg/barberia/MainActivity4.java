@@ -79,7 +79,7 @@ public class MainActivity4 extends AppCompatActivity {
 
                 //id deberia ser algo ligado al inicio de sesion
                 //pa que no de error
-                String id = "22222";
+                String id = "33333";
                 postCita(id,trabajador,lugar,fecha,hora);
 
                 Intent intent_lista = new Intent(MainActivity4.this, MainActivitymenu.class);
