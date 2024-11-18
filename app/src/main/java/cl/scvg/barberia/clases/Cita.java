@@ -6,12 +6,14 @@ public class Cita {
     private String peluquero;
     private String lugar;
     private String fecha;
+    private String hora;
 
     public Cita() {
         this.ID = ID;
         this.peluquero = peluquero;
         this.lugar = lugar;
         this.fecha = fecha;
+        this.hora = hora;
     }
 
     public Cita(String ID, String peluquero, String lugar,String fecha) {
@@ -53,6 +55,14 @@ public class Cita {
         this.fecha = fecha;
     }
 
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
     @Override
     public String toString() {
         return "Cita{" +
@@ -60,6 +70,7 @@ public class Cita {
                 ", peluquero='" + peluquero + '\'' +
                 ", lugar='" + lugar + '\'' +
                 ", fecha='" + fecha + '\'' +
+                ", hora='" + hora + '\'' +
                 '}';
     }
 }

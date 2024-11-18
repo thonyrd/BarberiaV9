@@ -8,8 +8,8 @@
     tools:context=".MainActivity4">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="397dp"
-        android:layout_height="696dp"
+        android:layout_width="396dp"
+        android:layout_height="711dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -19,22 +19,25 @@
 
         <CalendarView
             android:id="@+id/calendario"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="337dp"
+            android:layout_height="294dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.489"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.145" />
+            app:layout_constraintVertical_bias="0.017" />
 
         <Button
             android:id="@+id/buttonGuardar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Button"
-            tools:layout_editor_absoluteX="155dp"
-            tools:layout_editor_absoluteY="533dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.921"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.975" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

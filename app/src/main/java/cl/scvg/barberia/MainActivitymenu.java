@@ -18,7 +18,7 @@ public class MainActivitymenu extends AppCompatActivity {
     SecondFragment secondFragment = new SecondFragment();
     ThirdFragment thirdFragment = new ThirdFragment();
     FourFragment fourFragment = new FourFragment();
-    String DIREC;
+    String id_cita;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +27,8 @@ public class MainActivitymenu extends AppCompatActivity {
         //SecondFragment secondFragment;
         Intent intent = getIntent();
 
-        DIREC = intent.getStringExtra("direcciono");
-        secondFragment = SecondFragment.newInstance(DIREC);
+        id_cita = intent.getStringExtra("id");
+        secondFragment = SecondFragment.newInstance(id_cita);
 
         BottomNavigationView navigation = findViewById(R.id.bottom_navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

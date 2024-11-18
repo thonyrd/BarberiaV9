@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.TimePicker;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,8 +24,9 @@ import cl.scvg.barberia.clases.Peluquero;
 public class MainActivity4 extends AppCompatActivity {
 
     CalendarView calendarView;
+    //TimePicker timePicker;
     Button guardar;
-    String lugar, trabajador,fecha;
+    String lugar, trabajador,fecha,hora;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -43,6 +45,7 @@ public class MainActivity4 extends AppCompatActivity {
 
 
         calendarView = findViewById(R.id.calendario);
+        //timePicker = findViewById(R.id.timePicker);
         guardar = findViewById(R.id.buttonGuardar);
 
         inicializarFireBase();
@@ -59,14 +62,33 @@ public class MainActivity4 extends AppCompatActivity {
             }
         });
 
+        /*timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+            @Override
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                // Formatea la hora seleccionada
+                hora = String.format("%02d:%02d", hourOfDay, minute);
+
+            }
+        });*/
+
+
+
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 //id deberia ser algo ligado al inicio de sesion
                 //pa que no de error
-                String id = "1111";
-                postCita(id,trabajador,lugar,fecha);
+                String id = "22222";
+                postCita(id,trabajador,lugar,fecha,hora);
+
+                Intent intent_lista = new Intent(MainActivity4.this, MainActivitymenu.class);
+
+                intent_lista.putExtra("id",id);
+
+
+                startActivity(intent_lista);
+
 
             }
         });
@@ -79,7 +101,7 @@ public class MainActivity4 extends AppCompatActivity {
         });
     }
 
-    private void postCita(String id, String peluquero, String lugar,String dates) {
+    private void postCita(String id, String peluquero, String lugar,String dates,String horas) {
 
         Cita cita = new Cita();
 
@@ -87,6 +109,7 @@ public class MainActivity4 extends AppCompatActivity {
         cita.setPeluquero(peluquero);
         cita.setLugar(lugar);
         cita.setFecha(dates);
+        cita.setHora(horas);
 
         databaseReference.child("Citas").child(cita.getID()).setValue(cita);
 

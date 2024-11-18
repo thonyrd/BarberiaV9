@@ -18,8 +18,8 @@ import androidx.fragment.app.Fragment;
 public class SecondFragment extends Fragment {
     Button viaje;
     TextView datos;
-    private static final String ARG_DIREC = "direcciono"; // Constante para la clave
-    private String direcciono;
+    private static final String ARG_ID = "id"; // Constante para la clave
+    private String id_cita;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -51,10 +51,10 @@ public class SecondFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-    public static SecondFragment newInstance(String direcciono) {
+    public static SecondFragment newInstance(String id) {
         SecondFragment fragment = new SecondFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_DIREC, direcciono);
+        args.putString(ARG_ID, id);
         fragment.setArguments(args);
         return fragment;
     }
@@ -71,7 +71,7 @@ public class SecondFragment extends Fragment {
 
 
         if (getArguments() != null) {
-            direcciono = getArguments().getString(ARG_DIREC);
+            id_cita = getArguments().getString(ARG_ID);
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
@@ -88,8 +88,8 @@ public class SecondFragment extends Fragment {
 
         //datos = view.findViewById(R.id.textViewDATOS);
         TextView datos = view.findViewById(R.id.textViewDATOS);
-        if (direcciono != null) {
-            datos.setText(direcciono); // Mostrar el valor en el TextView
+        if (id_cita != null) {
+            datos.setText(id_cita); // Mostrar el valor en el TextView
         }
 
         // Aquí puedes agregar la lógica para el botón, por ejemplo, un OnClickListener
